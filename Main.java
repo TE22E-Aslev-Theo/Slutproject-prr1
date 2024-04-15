@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class Main implements Serializable{
 
+    public static void clearconsole(){
+        //tar bort text som är över inmatnings-symbel(blinkande | )
+        System.out.println("\033[H\033[2J");
+        //ändrara inmatnings-symbolens position till längst up
+        System.out.flush();
+    }
+
     //plats array
     public static int[][] PlatsID =  {
         {1,2,0,0},{5,0,0,8},{0,10,0,12},{13,0,15,0},{0,0,19,20}
@@ -34,9 +41,8 @@ public class Main implements Serializable{
     //main tråden
     public static void main(String[] args) {
         Scanner t = new Scanner(System.in);
-        boolean b = true;
         //meny-loopen
-        while (b) {
+        while (true) {
             PrintStartMenu();
 
             //val 1
@@ -44,28 +50,51 @@ public class Main implements Serializable{
             int answer = Integer.parseInt(t.nextLine());
             switch (answer) {
                 case 1:
-                    System.out.println();
+                    clearconsole();
+                    System.out.print("antal vuxna (18 år eller över) >");
+                    int vuxna = Integer.parseInt(t.nextLine());
+                    System.out.println("");
+                    clearconsole();
+                    System.out.print("antal barn (under 18 år)>");
+                    int barn = Integer.parseInt(t.nextLine());
+                    int pris = vuxna*120 + barn * 80;
+                    clearconsole();
+                    System.out.println("Pris: " + pris + "kr");
+                    System.out.println("Betalar du med swish eller kort?");
+                    String val = t.nextLine().toLowerCase();
+                    if (val == "kort") {
+                        
+                    }else if (val == "swish"){
+
+                    }else{
+                        System.out.println("Ogiltigt svar");
+                    }
+                    
+                    t.nextLine();
+                    clearconsole();
                     break;
                 case 2:
+                    clearconsole();
                     //skriver ut platserna
                     PrintPeople();
                     System.out.print(">");
                     t.nextLine();
                     //clearar consolen
-                    System.out.println("\033[H\033[2J");
-                    System.out.flush();
+                    clearconsole();
+
                     break;
                 case 3:
                     
                     break;
                 case 4:
                     //stänger av programet
-                    b = false;
+                    System.exit(answer);
+                    t.close();
                     break;
                 default:
                     break;
             }
         }    
-    t.close();
+    
     }
 }
