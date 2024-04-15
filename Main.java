@@ -1,14 +1,19 @@
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class Main implements Serializable{
+public class Main{
 
     public static int[][] PlatsID =  {
-        {1,2,0,0},{5,6,7,8},{9,10,11,12},{13,14,15,16},{17,18,19,20}
+        {1,2,0,0},{5,0,0,8},{0,10,0,12},{13,0,15,0},{0,0,19,20}
     };
     
-    public static void setPeople(){
-        
+    public static void PrintPeople(){
+        for (int i = 0; i < PlatsID.length; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| "+ PlatsID[i][j]+"|");
+            }
+            System.out.println("");
+        }
     }
 
     public static void PrintStartMenu(){
@@ -25,38 +30,35 @@ public class Main implements Serializable{
 
     public static void main(String[] args) {
         Scanner t = new Scanner(System.in);
-        
-        while (true) {
+        boolean b = true;
+        while (b) {
+            System.out.println("hej");
             PrintStartMenu();
-            String answer = t.nextLine();
+            int answer2 = Integer.parseInt(t.nextLine());
 
-            if (answer == "1") 
+            if (answer2 == 1) 
             {
-                while (true) 
-                {
-                    
+                
+            }
+            if (answer2 == 2) 
+            {
+                for (int i = 0; i < 5; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        System.out.print("| "+ PlatsID[i][j]+"|");
+                    }
+                    System.out.println("");
                 }
             }
-            if (answer == "2") 
+            if (answer2 == 3) 
             {
-                while (true) 
-                {
-                    
-                }
+                
             }
-            if (answer == "3") 
+            if (answer2 == 4) 
             {
-                while (true) 
-                {
-                    
-                }
+                b = false;
             }
-            if (answer == "4") 
-            {
-                break;
-            }
-        }
-        
-        t.close();
+            
+        }    
+    t.close();
     }
 }
