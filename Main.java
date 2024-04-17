@@ -16,7 +16,10 @@ public class Main implements Serializable{
     public static int[][] PlatsID =  {
         {1,2,0,0},{5,0,0,8},{0,10,0,12},{13,0,15,0},{0,0,19,20}
     };
-    
+    public static int[][] datum = {
+        {2001, 6, 8},{ 2002, 1, 2},{},{},{2006, 8, 9},{},{},{},{2006 ,5,5},{},
+        {1999, 2, 29},{},{2009, 3, 3},{1300,5,3},{},{3000, 3, 2},{},{},{2003, 13, 32},{0,12,24}
+    };
 
     //printar ut alla platser
     public static void PrintPeople(){
