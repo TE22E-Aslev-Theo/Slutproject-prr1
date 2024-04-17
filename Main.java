@@ -1,5 +1,6 @@
 
 import java.io.Serializable;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main implements Serializable{
@@ -15,6 +16,7 @@ public class Main implements Serializable{
     public static int[][] PlatsID =  {
         {1,2,0,0},{5,0,0,8},{0,10,0,12},{13,0,15,0},{0,0,19,20}
     };
+    
 
     //printar ut alla platser
     public static void PrintPeople(){
@@ -41,6 +43,7 @@ public class Main implements Serializable{
     //main tråden
     public static void main(String[] args) {
         Scanner t = new Scanner(System.in);
+
         //meny-loopen
         while (true) {
             PrintStartMenu();
@@ -52,20 +55,35 @@ public class Main implements Serializable{
                 case 1:
                     clearconsole();
                     System.out.print("antal vuxna (18 år eller över) >");
-                    int vuxna = Integer.parseInt(t.nextLine());
+                    int vuxna[] = new int[Integer.parseInt(t.nextLine())];
                     System.out.println("");
                     clearconsole();
                     System.out.print("antal barn (under 18 år)>");
-                    int barn = Integer.parseInt(t.nextLine());
-                    int pris = vuxna*120 + barn * 80;
+                    int barn[] = new int[Integer.parseInt(t.nextLine())];
+                    for (int i = 0; i < barn.length; i++) {
+                        
+                    }
+                    int pris = vuxna[0]*120 + barn[0] * 80;
                     clearconsole();
                     System.out.println("Pris: " + pris + "kr");
-                    System.out.println("Betalar du med swish eller kort?");
-                    String val = t.nextLine().toLowerCase();
-                    if (val == "kort") {
+                    System.out.println("Betalar du med swish[1] eller kort[2]?");
+                    int val = t.nextInt();
+                    if (val == 2) {
                         
-                    }else if (val == "swish"){
-
+                    }
+                    if (val == 1){
+                        Random r = new Random();
+                        for (int i = 0; i < 15; i++) {
+                            for (int j = 0; j < 35; j++) {
+                                int randint = r.nextInt(0,2);
+                                if (randint == 1) {
+                                    System.out.print("*");
+                                }else if (randint == 0){
+                                    System.out.print(" ");
+                                }
+                            }
+                            System.out.println("");
+                        }
                     }else{
                         System.out.println("Ogiltigt svar");
                     }
