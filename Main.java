@@ -17,8 +17,8 @@ public class Main{
     };
     //födelse datum array
     public static int[][] datum = {
-        {2001, 6, 8},{ 2002, 1, 2},{0,0,0},{0,0,0},{2006, 8, 9},{0,0,0},{0,0,0},{2006 ,5,5},{0,0,0},{0,0,0},
-        {1999, 2, 29},{0,0,0},{2009, 3, 3},{1300,5,3},{0,0,0},{3000, 3, 2},{0,0,0},{0,0,0},{2003, 13, 32},{0,12,24}
+        {2001, 6, 8},{ 2002, 1, 2},{0,0,0},{0,0,0},{2006, 8, 9},{0,0,0},{0,0,0},{2006 ,5,5},{0,0,0},{1999, 2, 29},{0,0,0},
+        {2009, 3, 3},{1300,5,3},{0,0,0},{3000, 3, 2},{0,0,0},{0,0,0},{0,0,0},{2003, 13, 32},{0,12,24}
     };
     public static String[] namn = {
         "Sleepy joe", "Kapitolium conqurer", "", ""
@@ -30,12 +30,14 @@ public class Main{
     //printar ut alla platser
     public static void PrintPeople(){
         for (int i = 0; i < PlatsID.length; i++) {
-            if ((i + 1)%4 == 0) {
+            if ((i)%4 == 0) {
                 System.out.println("");
+                System.out.print("| "+ PlatsID[i]+" |");
             }else{
                 System.out.print("| "+ PlatsID[i]+" |");
             }
         }
+        System.out.println("");
     }
 
     //skriver ut startmeny
@@ -187,14 +189,15 @@ public class Main{
                     //visar platser som är upptagna
                     clearconsole();
                     PrintPeople();
-                    System.out.println("""
-                    Se mer[1]
-                    Gå tillbaka[2]       
-                    """);
-
-                    System.out.print(">");
-                    String i = t.nextLine();
-                    if (i == "1") {
+                    System.out.println("Se mer[1] Gå tillbaka[2]");
+                    int i = 0;
+                    try {
+                        i = Integer.parseInt(t.nextLine());
+                    } catch (Exception e) {
+                        continue mainloop;
+                    }
+                    
+                    if (i == 1) {
                         for (int j = 0; j < PlatsID.length; j++) {
                             if (PlatsID[j] != 0) {
                                 if (PlatsID[j] % 4 == 0) {
@@ -222,16 +225,26 @@ public class Main{
                         clearconsole();
                         break;
                     }
-                    if (i == "2") {
+                    if (i == 2) {
                         //clearar consolen
                         clearconsole(); 
                         break;
                     }
                     break;
                 case "3":
-                    System.out.println("Vilken plats vill du ");
-
-
+                    System.out.println("Vilken plats vill du avboka");
+                    System.out.println(">");
+                    int plats;
+                    try {
+                        plats = Integer.parseInt(t.nextLine());
+                    } catch (Exception e) {
+                        continue mainloop;
+                    }
+                    PlatsID[plats - 1] = 0;
+                    datum[plats - 1][0] = 0;
+                    datum[plats - 1][1] = 0;
+                    datum[plats - 1][2] = 0;
+                    namn[plats - 1] = "";
                     break;
                 case "4":
                     //stänger av programet
