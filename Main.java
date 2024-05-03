@@ -117,9 +117,11 @@ public class Main{
                             }
                             System.out.println(platsval);
                         PlatsID[platsval - 1] = platsval;
+                        namn[platsval - 1] = barnNamn[i];
                         for (int j = 0; j < 3; j++) {
                             datum[platsval - 1][j] = barnDatum[i][j];
                         }
+
                         
                     }
 
@@ -141,6 +143,7 @@ public class Main{
                             }
                             System.out.println(platsval);
                         PlatsID[platsval - 1] = platsval;
+                        namn[platsval - 1] = vuxnaNamn[i];
                         for (int j = 0; j < 3; j++) {
                             datum[platsval - 1][j] = vuxnaDatum[i][j];
                         }
@@ -190,31 +193,45 @@ public class Main{
                     """);
 
                     System.out.print(">");
-                    int i = t.nextInt();
-                    if (i == 1) {
+                    String i = t.nextLine();
+                    if (i == "1") {
                         for (int j = 0; j < PlatsID.length; j++) {
                             if (PlatsID[j] != 0) {
-                                System.out.println(
-                                "Plats ID: " + 
-                                (PlatsID[j]) + " Namn: " + 
-                                namn[PlatsID[j] - 1] + " FödelseDatum: " +
-                                datum[PlatsID[j] - 1][0] + "-" 
-                                + datum[PlatsID[j] - 1][1] + "-" 
-                                + datum[PlatsID[j] - 1][2]
-                                );
+                                if (PlatsID[j] % 4 == 0) {
+                                    System.out.println(
+                                    "Plats ID: " + 
+                                    (PlatsID[j]) + " Namn: " + 
+                                    namn[PlatsID[j] - 1] + " FödelseDatum: " +
+                                    datum[PlatsID[j] - 1][0] + "-" 
+                                    + datum[PlatsID[j] - 1][1] + "-" 
+                                    + datum[PlatsID[j] - 1][2] + " Fönsterplats"
+                                    );   
+                                }else{
+                                    System.out.println(
+                                    "Plats ID: " + 
+                                    (PlatsID[j]) + " Namn: " + 
+                                    namn[PlatsID[j] - 1] + " FödelseDatum: " +
+                                    datum[PlatsID[j] - 1][0] + "-" 
+                                    + datum[PlatsID[j] - 1][1] + "-" 
+                                    + datum[PlatsID[j] - 1][2]
+                                    );    
+                                }
+                                
                             }
                         }
                         clearconsole();
                         break;
                     }
-                    if (i == 2) {
+                    if (i == "2") {
                         //clearar consolen
                         clearconsole(); 
                         break;
                     }
                     break;
                 case "3":
-                    
+                    System.out.println("Vilken plats vill du ");
+
+
                     break;
                 case "4":
                     //stänger av programet
